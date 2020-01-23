@@ -29,7 +29,7 @@ L1:
 	inc si					;if 'not equal' increment 'si'
 	jmp L1					;then jump to label L1
 L2:
-	dec si					decrement 'si'
+	dec si					;decrement 'si'
 	mov dl, gstr[si]			;move contents of gstr[si] to dl
 	;mov ah, 02h				;to display the contents of dl
 	;int 21h				;call the kernal => prints reverse string on the go.. comment line no 36 & 37
