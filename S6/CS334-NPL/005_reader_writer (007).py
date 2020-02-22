@@ -74,4 +74,4 @@ if __name__ == '__main__':
 	Reader().start() # Reader-2
 	time.sleep(0.5)
 	Writer().start() # Writer-1
-	time.sleep(0.5)
+time.sleep(0.5)
