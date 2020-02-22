@@ -4,7 +4,7 @@ import os
 def parent_child():
     n = os.fork()
     # n greater than 0 means parent process
-    if n > 0:
+    if n:
         print("Parent process and id is = ", os.getpid())
     # n equals to 0 means child process
     else:
