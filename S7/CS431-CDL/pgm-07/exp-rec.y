@@ -4,8 +4,8 @@
     void yyerror();
 %}
 
-%token NUMBER
 %token VARIABLE
+%token NUMBER
 %left '+' '-'
 %left '*' '/' '%'
 %left '(' ')'
@@ -22,7 +22,7 @@ E: E '+' E | E '-' E
 %%
 
 int main() {
-    printf("\nEnter any *arithmetic* expression: ");
+    printf("\nEnter any arithmetic expression: ");
     yyparse();
 }
 

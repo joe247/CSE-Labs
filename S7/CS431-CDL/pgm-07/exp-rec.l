@@ -1,12 +1,11 @@
 %{
-    #include <stdio.h>
     #include "y.tab.h"
 %}
 
 %%
-[a-zA-Z]+   {return (VARIABLE);}
-[0-9]       {return (NUMBER);}
-[\t]        {;}
+[a-zA-Z]+   {return VARIABLE;}
+[0-9]       {return NUMBER;}
+[ \t]       {} //Do nothing if whitespace
 [\n]        {return 0;}
 .           {return yytext[0];}
 %%
