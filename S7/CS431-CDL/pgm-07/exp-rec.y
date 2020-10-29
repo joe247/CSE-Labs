@@ -11,7 +11,7 @@
 %left '(' ')'
 
 %%
-S: VARIABLE '=' E{
+S: VARIABLE '=' E {
     printf("\nValid expression.\n");
     return 0;
 };

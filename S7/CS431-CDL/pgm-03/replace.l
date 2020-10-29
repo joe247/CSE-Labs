@@ -1,7 +1,8 @@
 %%
-"\t"    {printf(" ");}
-"\n"    {printf(" ");}
+[ \t]   printf(" ");
+[\n]    printf(" ");
 %%
+
 int main() {
     extern FILE *yyin;
     yyin = fopen("new.txt", "r");
