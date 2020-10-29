@@ -3,9 +3,9 @@
 %}
 
 %%
-[0-9]       {return DIGIT;}
 [a-zA-Z]    {return LETTER;}
-[\t]        {;}
+[0-9]       {return DIGIT;}
+![ \t]      {} //Flag whitespace
 \n          {return 0;}
 .           {return yytext[0];}
 %%
