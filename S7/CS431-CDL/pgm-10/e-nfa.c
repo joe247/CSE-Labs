@@ -53,11 +53,27 @@ void init_NFA_table()
     NFA_TAB[1][0] = "12";
     NFA_TAB[1][1] = "13";
     NFA_TAB[2][0] = "4";
-    NFA_TAB[2][1] = "";
-    NFA_TAB[3][0] = "";
+    NFA_TAB[2][1] = ""; //e
+    NFA_TAB[3][0] = ""; //e
     NFA_TAB[3][1] = "4";
     NFA_TAB[4][0] = "4";
     NFA_TAB[4][1] = "4";
+    
+    /*
+     q0 ==> A; q1 ==> B;
+     q2 ==> C; q3 ==> D;
+
+    NFA_TAB =
+       | 0   1
+    ---+-------    
+    q0 | 12  13
+    q1 | 12  13
+    q2 | 04  e 
+    q3 | e   04
+    q4 | 04  04
+ 
+    */
+
     NFA_STATES = 5;
     DFA_STATES = 0;
     N_SYM = 2;
@@ -75,9 +91,7 @@ void string_merge(char *s, char *t)
             t++;
         }
         else if (*p < *t)
-        {
             *r++ = *p++;
-        }
         else
             *r++ = *t++;
     }
