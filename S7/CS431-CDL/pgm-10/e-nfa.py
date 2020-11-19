@@ -1,8 +1,8 @@
 def display(fa):
     for states, values in fa.items():
-        print(f"{states}", end="  |\t")
+        print(f"{states}  |\t", end="")
         for _, nfa in values.items():
-            print(f"{nfa}\t", end=" ")
+            print(f"{nfa}\t", end="")
         print()
 
 
@@ -45,14 +45,14 @@ if __name__ == "__main__":
     }
     NFA_TAB = {}
 
-    print("e-NFA\n-----")
-    print("   |\t0\t 1\t e")
-    print("---+------------------------")
+    print("e-NFA\n=====")
+    print("   |\t0\t1\t e")
+    print("---+-----------------------")
     display(e_NFA_TAB)
 
     e_closure()
 
-    print("\nNFA\n---")
+    print("\nNFA\n===")
     print("   |\t 0\t 1")
-    print("---+----------------")
+    print("---+---------------")
     display(NFA_TAB)
