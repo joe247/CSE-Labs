@@ -13,11 +13,14 @@ def E():
 
 
 def _E():
-    if lp == '+':
-        match('+')
-        T()
-        _E()
-    else:
+    global count
+    try:
+        if exp[count] == '+':
+            count += 1
+            T()
+            _E()
+    except IndexError as e:
+        #print("Out of Bound!")
         return
 
 
@@ -27,37 +30,44 @@ def T():
 
 
 def _T():
-    if lp == '*':
-        match('*')
-        F()
-        _T()
-    else:
+    global count
+    try:
+        if exp[count] == '*':
+            count += 1
+            F()
+            _T()
+    except IndexError as e:
+        #print("Out of Bound!")
         return
 
 
 def F():
-    if lp == '(':
-        match("(")
-        E()
-        if lp == ')':
-            match(")")
-    elif lp.isalpha():
-            match(lp)
-    else:
+    global count, flag
+    try:
+        if exp[count].isalnum():
+            count += 1
+        elif exp[count] == '(':
+            count += 1
+            E()
+            if exp[count] == ')':
+                count += 1
+            else:
+                flag = 1
+        else:
+            flag = 1
+    except IndexError as e:
+        #print("Out of Bound!")
         return
 
 
-def match(char):
-    global lp, cnt
-    if lp == char: # why this warning?
-        cnt += 1
-        lp = exp[cnt]
-    else:
-        print("Error!")
-
 if __name__ == "__main__":
-    cnt = 0
-    exp = input("Enter a expression [w/ only (+ or *) operators]: ").rstrip().replace(' ', '') + '$'
-    lp = exp[cnt]
+    count = flag = 0
+    exp = input(
+        "Enter a expression [w/ only (+ or *) operators]: ").rstrip().replace(' ', '')
+
     E()
-    print("Accepted" if lp == '$' else "Rejected")
+
+    if len(exp) == count and flag == 0:
+        print("Valid Expression")
+    else:
+        print("Invalid Expression")
