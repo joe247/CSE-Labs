@@ -1,4 +1,4 @@
-# Compiler Propagation Program
+# Constant Propagation Program
 
 if __name__ == "__main__":
     x = 10
