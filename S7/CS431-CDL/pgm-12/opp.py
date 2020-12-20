@@ -30,25 +30,25 @@ def operator_p_parsing(pr_table, terminals):
     print("-----\t\t\t-----\t\t\t-------\t\t\t------")
 
     while lp < len(ip_string):
+        pr_tb = deter_precedence(stack[top], ip_string[lp])
         if ip_string[lp] not in terminals:
             #print("----> * Invalid terminal * <----")
-            act = 4
             break
         print(''.join(stack[:top+1])+'\t\t\t' +
               ''.join(ip_string[lp:])+'\t\t\t' +
-              deter_precedence(stack[top], ip_string[lp]) +
+              pr_tb +
               '\t\t\t'+actions[act])
         logger.debug(stack[top] + ip_string[lp] +
-                     deter_precedence(stack[top], ip_string[lp]))
-        if deter_precedence(stack[top], ip_string[lp]) == '=':
+                     pr_tb)
+        if pr_tb == '=':
             act = 3
             lp += 1
-        elif deter_precedence(stack[top], ip_string[lp]) == '<':  # push | shift
+        elif pr_tb == '<':  # push | shift
             stack.append(ip_string[lp])
             top += 1
             act = 1
             lp += 1
-        elif deter_precedence(stack[top], ip_string[lp]) == '>':  # pop | reduce
+        elif pr_tb == '>':  # pop | reduce
             stack.pop(-1)
             top -= 1
             act = 2
