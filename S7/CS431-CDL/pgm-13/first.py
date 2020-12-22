@@ -1,16 +1,18 @@
 import re
+from pprint import pprint
 
 
 def get_if_nt(handle, prods):
     """Loops over the passed production"""
+    temp = []
     for sub_seq in prods[handle]:
         if sub_seq[0] in terminals:
-            return sub_seq[0]
+            temp.append(sub_seq[0])
         else:
             if handle == sub_seq[0]:
                 prods[handle].remove(sub_seq)
             return get_if_nt(sub_seq[0], prods)
-
+    return temp
 
 def get_first(grammar):
     """Loops over the given grammar"""
@@ -24,9 +26,10 @@ def get_first(grammar):
                 # get if rhs[0][0] turned out to be a non-terminal
                 if lhs == seq[0]:
                     grammar[lhs].remove(seq)
-                first[lhs].append(get_if_nt(seq[0], grammar))
+                first[lhs] = get_if_nt(seq[0], grammar)
 
-    print(first)
+    print("\nFIRST(NT) =>")
+    pprint(first)
 
 
 if __name__ == "__main__":
