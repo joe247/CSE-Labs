@@ -1,9 +1,9 @@
-import logging
+# import logging
 
-logging.basicConfig(filename="newfile.log",
-                    format='%(asctime)s %(message)s', filemode='w')
-logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
+# logging.basicConfig(filename="newfile.log",
+#                    format='%(asctime)s %(message)s', filemode='w')
+# logger = logging.getLogger()
+# logger.setLevel(logging.DEBUG)
 
 
 def deter_precedence(row, col):
@@ -32,14 +32,14 @@ def operator_p_parsing(pr_table, terminals):
     while lp < len(ip_string):
         pr_tb = deter_precedence(stack[top], ip_string[lp])
         if ip_string[lp] not in terminals:
-            #print("----> * Invalid terminal * <----")
+            # print("----> * Invalid terminal * <----")
             break
         print(''.join(stack[:top+1])+'\t\t\t' +
               ''.join(ip_string[lp:])+'\t\t\t' +
               pr_tb +
               '\t\t\t'+actions[act])
-        logger.debug(stack[top] + ip_string[lp] +
-                     pr_tb)
+        # logger.debug(stack[top] + ip_string[lp] +
+        #             pr_tb)
         if pr_tb == '=':
             act = 3
             lp += 1
