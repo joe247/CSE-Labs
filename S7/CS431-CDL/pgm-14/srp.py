@@ -1,11 +1,3 @@
-# Shift Reduce Program
-#import logging
-
-# logging.basicConfig(filename="newfile.log",
-#                    format='%(asctime)s %(message)s', filemode='w')
-#logger = logging.getLogger()
-# logger.setLevel(logging.DEBUG)
-
 # print('''\nGiven Grammar:
 #    E -> E + E
 #    E -> E / E
@@ -36,9 +28,9 @@ def shift_reduce_parser(handle, prd_set):
             stack[top] = handle  # reduce E --> id
             eqn = ''.join(stack[1:])
             continue
-        elif eqn in prd_set:  # reduce E --> E +=*/ E
+        elif eqn in prd_set:
             act = 2
-            stack[1:] = handle
+            stack[1:] = handle  # reduce E --> E +-*/ E
             eqn = ''.join(stack[1:])
             top = len(stack) - 1
             continue
