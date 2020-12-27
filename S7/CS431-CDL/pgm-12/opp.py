@@ -20,7 +20,7 @@ def deter_precedence(row, col):
             return '<' if col.isalnum() else '>'
 
 
-def operator_p_parsing(pr_table, terminals):
+def operator_p_parsing(terminals):
     stack, actions = ['$'], ['initate', 'shift', 'reduce', 'accept', 'reject']
     top = lp = act = 0
     ip_string = list(
@@ -78,4 +78,4 @@ def precedence_table():
 
 if __name__ == "__main__":
     pr_table, terminals = precedence_table()
-    operator_p_parsing(pr_table, terminals)
+    operator_p_parsing(terminals)
