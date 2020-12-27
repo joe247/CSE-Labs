@@ -48,11 +48,7 @@ def shift_reduce_parser(handle, prd_set):
         act = 1
         stack.append(elm)  # shift
         top += 1
-        if lp < len(string):
-            lp += 1
-        else:
-            lp = len(string) - 1
-
+        lp = lp + 1 if lp < len(string) else len(string) - 1
         elm = string[lp]
 
     print(''.join(stack)+'\t\t\t' +
